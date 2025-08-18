@@ -1,6 +1,11 @@
+import sys
+sys.path.insert(0, '/home/vboxuser/airflow/scripts')  # MUST come first
+
 from airflow import DAG
-from airflow.operators.bash import BashOperator 
+from airflow.operators.python import PythonOperator
 from datetime import datetime, timedelta
+
+from data_ingestion import fetch_stock_data 
 
 default_args = {
     'owner': 'airflow',
@@ -10,17 +15,15 @@ default_args = {
 }
 
 with DAG(
-    dag_id='stock_data_ingestion',
+    dag_id='mongo_data_ingestion',
     default_args=default_args,
-    description='Fetch stock data and store in MongoDB',
     schedule_interval='@daily',
-    catchup=False
+    catchup=False,
 ) as dag:
-    task1 = BashOperator(
-        task_id='print_hello',
-        bash_command='echo "Hello Airflow!"'
+
+    start = PythonOperator(
+        task_id='upload_to_mongodb',
+        python_callable=fetched_stock_data
     )
 
-    task1
-
-    
+    start
