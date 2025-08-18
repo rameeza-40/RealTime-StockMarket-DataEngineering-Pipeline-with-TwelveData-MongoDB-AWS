@@ -1,1 +1,1 @@
-# RealTime-StockMarket-DataEngineering-Pipeline-with-TwelveData-MongoDB-AWS
+Real time-stock Market data engineer with TwelveData-MongoDB-aws-emr-rds
