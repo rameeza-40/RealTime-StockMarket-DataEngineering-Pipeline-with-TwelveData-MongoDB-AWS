@@ -24,3 +24,18 @@ Real time-stock Market data engineer with TwelveData-MongoDB-aws-emr-rds
 
 
 <img width="10896" height="4036" alt="image" src="https://github.com/user-attachments/assets/90849d69-762d-4dc6-86d0-603ae47aacf7" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+![Uploading image.png…]()
