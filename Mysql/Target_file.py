@@ -1,16 +1,32 @@
 import os
 import pandas as pd
 from sqlalchemy import create_engine, text
+import requests  # for Slack notifications
+
+# --- Slack Webhook ---
+SLACK_WEBHOOK_URL = "https://hooks.slack.com/services/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"  # replace with your webhook
+
+def send_slack_notification(message: str):
+    """Send a notification to Slack"""
+    try:
+        payload = {"text": message}
+        response = requests.post(SLACK_WEBHOOK_URL, json=payload)
+        if response.status_code == 200:
+            print(f"📢 Slack notification sent: {message}")
+        else:
+            print(f" Failed to send Slack notification: {response.text}")
+    except Exception as e:
+        print(f" Slack notification error: {e}")
+
 
 # --- TiDB Cloud connection details ---
-host = "gateway01.ap-southeast-1.prod.aws.tidbcloud.com"  # Example, check in your TiDB Cloud console
+host = "gateway01.ap-southeast-1.prod.aws.tidbcloud.com"
 port = 4000
 user = "QS8VFHkTW1ooE3P.root"
 password = "gnZfmmMwFTpiT0D2"
 database = "S3_DESTINATION"
 
 # Create engine (TiDB is MySQL-compatible)
-
 engine = create_engine(
     f"mysql+pymysql://{user}:{password}@{host}:{port}/{database}",
     connect_args={
@@ -45,16 +61,40 @@ def upload_csv_to_tidb(csv_path, engine):
 
     # Insert data
     df.to_sql(table_name, engine, if_exists="append", index=False)
-    print(f"✅ Uploaded {csv_path} → table `{table_name}`")
+    msg = f"Uploaded {csv_path} → table `{table_name}`"
+    print(msg)
+    send_slack_notification(msg)
+
 
 # --- Loop through both folders and upload ---
 for folder in folders:
+    if not os.path.exists(folder):  # check if folder exists
+        warning_msg = f" Folder not found: {folder}"
+        print(warning_msg)
+        send_slack_notification(warning_msg)
+        continue  # skip this folder
+
     for file in os.listdir(folder):
         if file.endswith(".csv"):
             csv_path = os.path.join(folder, file)
-            upload_csv_to_tidb(csv_path, engine)
+            try:
+                upload_csv_to_tidb(csv_path, engine)
+            except Exception as e:
+                error_msg = f"❌ Failed to upload {csv_path}: {e}"
+                print(error_msg)
+                send_slack_notification(error_msg)
 
+send_slack_notification("🎉 All CSV files upload process completed!")
 print("🎉 All CSV files uploaded successfully to TiDB Cloud!")
+
+
+
+
+
+
+
+
+
 
 
 
