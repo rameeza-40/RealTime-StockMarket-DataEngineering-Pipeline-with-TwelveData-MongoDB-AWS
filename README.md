@@ -47,21 +47,11 @@ The pipeline ensures automation, reliability, and scalability with Apache Airflo
 
 <br/>
 
- ### 2️⃣ Validation
-
-* *Tool: Python validation module inside Airflow DAG*
-    
-* *Process:*
-
-    * *Apply schema enforcement to check required fields (symbol, datetime, open, high, low, close, volume).* 
-    * *Perform anomaly detection (e.g., null values, negative prices, missing timestamps).*
-    * *Only valid data is passed to the storage layer.*
-    
 ![WhatsApp Image 2025-07-26 at 16 09 52_eee5c4ee](https://github.com/user-attachments/assets/c9442e13-8546-4b95-a294-30678fe35e5e)
 
 <br/>
 
- ### 3️⃣ Storage (Raw Layer)
+ ### 2️⃣  Storage (Raw Layer)
 
  * *Tool: MongoDB (staging database)*
  * *Process:*
@@ -70,7 +60,7 @@ The pipeline ensures automation, reliability, and scalability with Apache Airflo
         
 <br/>
 
- ### 4️⃣ Processing
+ ###  3️ Processing
 
 * *Tool: PySpark running on Google Colab (for dev) / AWS EMR (for production scale)*
 
@@ -82,7 +72,7 @@ The pipeline ensures automation, reliability, and scalability with Apache Airflo
 
 <br/>
 
- ### 5️⃣ Aggregation
+ ### 4️⃣Aggregation
 
 * *Tool: AWS Glue*
 
@@ -95,7 +85,7 @@ The pipeline ensures automation, reliability, and scalability with Apache Airflo
 
 <br/>
 
-- ### 6️⃣ Analytics & Alerts
+- ### 5️⃣  Analytics & Alerts
 
 * *Analytics Storage:*
   
