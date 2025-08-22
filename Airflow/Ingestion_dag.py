@@ -1,5 +1,5 @@
 import sys
-sys.path.insert(0, '/home/vboxuser/airflow/scripts')  # MUST come first
+sys.path.insert(0, '/home/vboxuser/airflow/scripts') 
 
 from airflow import DAG
 from airflow.operators.python import PythonOperator
