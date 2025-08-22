@@ -138,5 +138,3 @@ The pipeline ensures automation, reliability, and scalability with Apache Airflo
 
 
 
-
-<img width="10560" height="4420" alt="image" src="https://github.com/user-attachments/assets/cebd11b4-89e2-4782-be54-2a09dc20150f" />
