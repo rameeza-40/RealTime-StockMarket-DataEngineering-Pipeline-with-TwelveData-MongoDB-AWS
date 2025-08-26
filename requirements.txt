@@ -1,0 +1,39 @@
+# Core
+pandas
+numpy
+requests
+
+# Databases
+Mongodb #NoSQL
+Tidb cloud #MYSQL
+sqlalchemy
+pymongo
+psycopg2-binary   # PostgreSQL connector
+
+# Airflow (workflow orchestration)
+apache-airflow
+
+# Spark (for AWS EMR / local testing)
+pyspark
+S3-bucket
+
+# AWS integration
+boto3
+
+# Logging & monitoring
+python-dotenv
+slack-sdk
+
+
+
+
+
+
+
+
+
+
+
+
+
+
