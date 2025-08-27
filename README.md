@@ -1,10 +1,14 @@
 ## **Real time-stock Market data engineer with TwelveData-MongoDB-Aws**
 <img width="10108" height="4304" alt="image" src="https://github.com/user-attachments/assets/a78e7077-acf2-4dca-acd9-5fcc701279ea" />
+
+ ---
  
  ## *Project Overview:*
 * *The Realtime Stock Market Data Engineering Pipeline is designed to capture, process, and analyze live stock market data from external APIs.The financial markets generate high-frequency, real-time data that must be collected, processed, and analyzed efficiently to enable decision-making for traders, analysts, and businesses. This project focuses on building a cloud-based, scalable, real-time data engineering pipeline that ingests stock market data from the TwelveData API, stores raw data in MongoDB, processes and transforms it using PySpark on AWS EMR, aggregates it with AWS Glue, and loads the results into AWS RDS for analytics and alerting.
 The pipeline ensures automation, reliability, and scalability with Apache Airflow orchestration and supports real-time monitoring and alerting for stock price fluctuations*
-##  <ins>*Key Components:*</ins> 
+---
+
+##  *Key Components:*
  
 * *Data Source: TwelveData API (providing OHLCV data every 5 minutes)*.
 
@@ -18,10 +22,10 @@ The pipeline ensures automation, reliability, and scalability with Apache Airflo
 
 * *Analytics Layer: Aggregated data loaded into AWS RDS (PostgreSQL/MySQL).*
 
- <br/>
+ ---
 
-
- ### Data Set Info
+ ### *Data Set Info*
+ 
 - *Source: TwelveData API*
 - *Format: JSON*
 - *Variables:*
@@ -35,9 +39,11 @@ The pipeline ensures automation, reliability, and scalability with Apache Airflo
     -`volume`: Volume of trade
 
 - *Each API call provides OHLCV (Open, High, Low, Close, Volume) data at 5-minute intervals.*
-  <br/>
-  ## ⚙️ Architecture Workflow:
- ### 1️⃣ Ingestion
+
+  ---
+  
+  ## ⚙️ *Architecture Workflow:*
+ ### 1️⃣ *Ingestion*
 
 * *Tool: Apache Airflow*
     
@@ -49,18 +55,18 @@ The pipeline ensures automation, reliability, and scalability with Apache Airflo
 
 ![WhatsApp Image 2025-07-26 at 16 09 52_eee5c4ee](https://github.com/user-attachments/assets/c9442e13-8546-4b95-a294-30678fe35e5e)
 
-<br/>
+<br/>  
 
- ### 2️⃣  Storage (Raw Layer)
+ ### 2️⃣  *Storage (Raw Layer)*
 
  * *Tool: MongoDB (staging database)*
  * *Process:*
     * *Raw validated JSON data stored in MongoDB.*
     * *Partition strategy → organized by symbol and date for faster retrieval.*
         
-<br/>
+<br/>  
 
- ###  3️ Processing
+ ###  3️ *Processing*
 
 * *Tool: PySpark running on Google Colab (for dev) / AWS EMR (for production scale)*
 
@@ -72,7 +78,7 @@ The pipeline ensures automation, reliability, and scalability with Apache Airflo
 
 <br/>
 
- ### 4️⃣Aggregation
+ ### 4️⃣ *Aggregation*
 
 * *Tool: AWS Glue*
 
@@ -85,7 +91,7 @@ The pipeline ensures automation, reliability, and scalability with Apache Airflo
 
 <br/>
 
-- ### 5️⃣  Analytics & Alerts
+- ### 5️⃣ *Analytics & Alerts*
 
 * *Analytics Storage:*
   
@@ -99,8 +105,8 @@ The pipeline ensures automation, reliability, and scalability with Apache Airflo
 
 * *Slack message"✅ All CSV files are stored successfully in S3 and TiDB Cloud.*
 
-- ### 🔄 End-to-End Data Flow
-
+- ### 🔄 *End-to-End Data Flow*
+ 
 * *TwelveData API → Airflow Ingestion → Validation → MongoDB (Raw Data) → PySpark (Colab/EMR) → S3 (Processed CSVs) → AWS Glue (Aggregations) → S3 (Aggregated Data) → TiDB Cloud (Final DB) → Slack (Notification)*
 
 
@@ -108,6 +114,13 @@ The pipeline ensures automation, reliability, and scalability with Apache Airflo
 
 
 
+## 🛠️ Tech Stack
+- **Languages & Libraries:** Python, Pandas, SQLAlchemy, PySpark  
+- **Databases:** MongoDB (raw), AWS RDS (analytics-ready)  
+- **Cloud:** AWS S3 (data lake), AWS EMR (Spark), AWS Glue (catalog)  
+- **Workflow Orchestration:** Apache Airflow  
+- **APIs:** TwelveData API  
+- **Notifications:** Slack Webhook  
 
 
 
