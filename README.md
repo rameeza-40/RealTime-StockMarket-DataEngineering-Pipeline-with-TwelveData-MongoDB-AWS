@@ -1,7 +1,11 @@
 ## **Real time-stock Market data engineer with TwelveData-MongoDB-Aws**
+ 
+ 
+ ---
+
 <img width="10108" height="4304" alt="image" src="https://github.com/user-attachments/assets/a78e7077-acf2-4dca-acd9-5fcc701279ea" />
 
- ---
+
  
  ## *Project Overview:*
 * *The Realtime Stock Market Data Engineering Pipeline is designed to capture, process, and analyze live stock market data from external APIs.The financial markets generate high-frequency, real-time data that must be collected, processed, and analyzed efficiently to enable decision-making for traders, analysts, and businesses. This project focuses on building a cloud-based, scalable, real-time data engineering pipeline that ingests stock market data from the TwelveData API, stores raw data in MongoDB, processes and transforms it using PySpark on AWS EMR, aggregates it with AWS Glue, and loads the results into AWS RDS for analytics and alerting.
